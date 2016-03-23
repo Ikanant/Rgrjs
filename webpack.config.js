@@ -1,5 +1,5 @@
 var options = {
-  entry: "./public/js/app.js",
+  entry: "./js/app.js",
   output: {
     path: __dirname + "/public",
     filename: "bundle.js"
@@ -10,7 +10,7 @@ var options = {
     loaders: [
       // test: anything that ends in .js
       // I was getting errors so I had to do: npm install babel-preset-react and add a query here
-      { test: /\.js$/, loader: 'babel-loader', query:{presets:['react']} }
+      { test: /\.js$/, loader: 'babel-loader', query:{presets:['react', 'es2015']} }
     ]
   }
 }
