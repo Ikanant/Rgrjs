@@ -63,7 +63,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_reactDom2.default.render(_react2.default.createElement(_Hello2.default, null), document.getElementById('react'));
+	_reactDom2.default.render(_react2.default.createElement(_Hello2.default, { name: '12' }), document.getElementById('react'));
 	
 	// let Hello = React.createClass({
 	//     render() {
@@ -20241,7 +20241,8 @@
 	            return _react2.default.createElement(
 	                'h3',
 	                null,
-	                'Hey 5'
+	                'Hey ',
+	                this.props.name
 	            );
 	        }
 	    }]);

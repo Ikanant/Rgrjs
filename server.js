@@ -1,4 +1,5 @@
 express = require('express');
+MongoClient = require('mongodb');
 
 var app = express();
 
@@ -6,4 +7,19 @@ var app = express();
 //app.get('/', (req, res) => res.send('helasdlo express'));
 app.use(express.static('public'));
 
-app.listen(3000);
+
+
+var db;
+MongoClient.connect("mongodb://Ikanant:apple@ds021999.mlab.com:21999/rgrjs", (err, database) => {
+    if (err) throw err;
+
+    db = database;
+    app.listen(3000, () => {console.log("Listening on port 3000")});
+});
+
+app.get('/data/links', (req, res) => {
+  db.collection("links").find({}).toArray((err, links) => {
+      if(err) throw err;
+      res.json(links);
+  });
+});
