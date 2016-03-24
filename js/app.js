@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// let Hello = React.createClass({
-//     render() {
-//         return <h3>Hello ES6</h3>;
-//     },
-// });
+import Main from './components/Main';
 
-import Hello from './components/Hello';
-
-ReactDOM.render(<Hello name='12'/>, document.getElementById('react'));
+ReactDOM.render(<Main/>, document.getElementById('react'));
