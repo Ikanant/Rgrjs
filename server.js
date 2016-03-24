@@ -10,7 +10,7 @@ app.use(express.static('public'));
 
 
 var db;
-MongoClient.connect("mongodb://Ikanant:apple@ds021999.mlab.com:21999/rgrjs", (err, database) => {
+MongoClient.connect("mongodb://localhost:27017/rgrjs", (err, database) => {
     if (err) throw err;
 
     db = database;
