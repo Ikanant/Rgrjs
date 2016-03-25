@@ -2,22 +2,19 @@ import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLInt,
-  GraphQLString
+  GraphQLString,
+  GraphQLList
 } from 'graphql';
 
-let counter = 7;
+let data = [12,13,14];
 
 let schema = new GraphQLSchema({
     query: new GraphQLObjectType({
-        name: 'RandomQuery',
+        name: 'ExampleQuery',
         fields: () => ({
-            counter:{
-                type: GraphQLInt,
-                resolve: () => counter
-            },
-            message:{
-                type: GraphQLString,
-                resolve: () => 'Hello hello graphql'
+            data:{
+                type: new GraphQLList(GraphQLInt),
+                resolve: () => data
             }
         })
     }),
