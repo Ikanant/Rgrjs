@@ -7,12 +7,14 @@ let _getAppState = () => {
 };
 
 class Main extends React.Component {
-    constructor(props) {
-      super(props);
 
-      this.state = _getAppState();
-      this.onChange = this.onChange.bind(this);
+    static propTypes = {
+        limit: React.PropTypes.number
     }
+    static defaultProps = {
+        limit: 2
+    }
+    state = _getAppState();
 
     componentDidMount() {
       API.fetchLinks();
@@ -23,7 +25,7 @@ class Main extends React.Component {
       LinkStore.removeListener("change", this.onChange);
     }
 
-    onChange() {
+    onChange = () => {
       console.log('4. In the View');
       this.setState(_getAppState());
     }
@@ -33,7 +35,7 @@ class Main extends React.Component {
 
 
     render() {
-      let content = this.state.links.map(link => {
+      let content = this.state.links.slice(0, this.props.limit).map(link => {
           return <li key={link._id}>
                   <a href={link.url}> {link.title} </a>
                 </li>;

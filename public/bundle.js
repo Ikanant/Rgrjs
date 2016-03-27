@@ -20235,14 +20235,21 @@
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
 	
-	  function Main(props) {
+	  function Main() {
+	    var _Object$getPrototypeO;
+	
+	    var _temp, _this, _ret;
+	
 	    _classCallCheck(this, Main);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
 	
-	    _this.state = _getAppState();
-	    _this.onChange = _this.onChange.bind(_this);
-	    return _this;
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Main)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = _getAppState(), _this.onChange = function () {
+	      console.log('4. In the View');
+	      _this.setState(_getAppState());
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 	
 	  _createClass(Main, [{
@@ -20257,15 +20264,9 @@
 	      _LinkStore2.default.removeListener("change", this.onChange);
 	    }
 	  }, {
-	    key: 'onChange',
-	    value: function onChange() {
-	      console.log('4. In the View');
-	      this.setState(_getAppState());
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var content = this.state.links.map(function (link) {
+	      var content = this.state.links.slice(0, this.props.limit).map(function (link) {
 	        return _react2.default.createElement(
 	          'li',
 	          { key: link._id },
@@ -20298,6 +20299,12 @@
 	  return Main;
 	}(_react2.default.Component);
 	
+	Main.propTypes = {
+	  limit: _react2.default.PropTypes.number
+	};
+	Main.defaultProps = {
+	  limit: 2
+	};
 	exports.default = Main;
 
 /***/ },
