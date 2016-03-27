@@ -11,9 +11,9 @@ class Main extends React.Component {
     static propTypes = {
         limit: React.PropTypes.number
     }
-    static defaultProps = {
-        limit: 2
-    }
+    // static defaultProps = {
+    //     limit: 2
+    // }
     state = _getAppState();
 
     componentDidMount() {

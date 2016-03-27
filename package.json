@@ -2,9 +2,8 @@
   "name": "rgrjs",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
   "scripts": {
-    "start": "babel-node index.js",
+    "start": "babel-node --presets react,es2015,stage-0 server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jonathan Hernandez",
@@ -14,6 +13,7 @@
     "babel-loader": "^6.2.4",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.7.2",
+    "babel-relay-plugin": "^0.7.3",
     "events": "^1.1.0",
     "express": "^4.13.4",
     "express-graphql": "^0.4.13",
@@ -24,6 +24,7 @@
     "mongodb": "^2.1.11",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-relay": "^0.7.3",
     "webpack": "^1.12.14"
   },
   "devDependencies": {
