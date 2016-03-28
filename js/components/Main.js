@@ -1,6 +1,5 @@
 import React from 'react';
-import API from '../API';
-import LinkStore from "../stores/LinkStore";
+import Relay from 'react-relay';
 
 let _getAppState = () => {
   return {links: LinkStore.getAll()}
@@ -11,31 +10,12 @@ class Main extends React.Component {
     static propTypes = {
         limit: React.PropTypes.number
     }
-    // static defaultProps = {
-    //     limit: 2
-    // }
-    state = _getAppState();
-
-    componentDidMount() {
-      API.fetchLinks();
-      LinkStore.on("change", this.onChange);
+    static defaultProps = {
+        limit: 3
     }
-
-    componentWillUnmount(){
-      LinkStore.removeListener("change", this.onChange);
-    }
-
-    onChange = () => {
-      console.log('4. In the View');
-      this.setState(_getAppState());
-    }
-
-
-
-
 
     render() {
-      let content = this.state.links.slice(0, this.props.limit).map(link => {
+      let content = this.props.store.links.slice(0, this.props.limit).map(link => {
           return <li key={link._id}>
                   <a href={link.url}> {link.title} </a>
                 </li>;
@@ -50,5 +30,22 @@ class Main extends React.Component {
         );
     }
 }
+
+// Declare the data requirement for this component...
+// Think of this as a ++ operator to add the data requirement
+Main = Relay.createContainer(Main, {
+    fragments: {
+        // fragment name can be anything
+        store: () => Relay.QL`
+            fragment on Store {
+                links {
+                    _id,
+                    title,
+                    url
+                }
+            }
+            `
+    }
+});
 
 export default Main;

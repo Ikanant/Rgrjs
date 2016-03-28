@@ -35,8 +35,8 @@ app.use(express.static('public'));
   // The fs library has a write to file function I will use
 
   // ---> This needs to be commented for nodemon infinite loop ISSUE
-  // fs.writeFile('./data/schema.json', JSON.stringify(json, null, 2), err => {
-  //     if(err) throw err;
-  // });
+  fs.writeFile('./data/schema.json', JSON.stringify(json, null, 2), err => {
+      if(err) throw err;
+  });
 
 })();
