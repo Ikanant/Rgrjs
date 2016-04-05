@@ -13,6 +13,7 @@ import fs from 'fs';
 // ES-2015 Syntax: Arrow Functions
 //app.get('/', (req, res) => res.send('helasdlo express'));
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
 (async () => {
   let db = await MongoClient.connect("mongodb://localhost:27017/rgrjs");
